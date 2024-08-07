@@ -1,0 +1,6 @@
+<!-- Material form field for the search input -->
+<mat-form-field appearance="fill">
+  <mat-label>Search Products</mat-label>
+  <input matInput (input)="onSearchChange($event)" placeholder="Enter product name">
+  <mat-icon matPrefix>search</mat-icon>
+</mat-form-field>

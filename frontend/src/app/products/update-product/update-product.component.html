@@ -1,0 +1,76 @@
+<div class="modal" *ngIf="product">
+  <!-- Modal container -->
+  <div class="modal-content">
+    <!-- Close button for the modal -->
+    <span class="close" (click)="onCloseModal()">&times;</span>
+    <h2>Update Product</h2>
+
+    <!-- Form for updating product details -->
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+
+      <!-- Name field -->
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <!-- Input for product name with validation -->
+        <input id="name" type="text" formControlName="name" class="form-control" />
+        <!-- Validation message for name field -->
+        <div *ngIf="updateForm.get('name')?.invalid && updateForm.get('name')?.touched" class="error-message">
+          <span *ngIf="updateForm.get('name')?.errors?.['required']">Name is required.</span>
+        </div>
+      </div>
+
+      <!-- Quantity field -->
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <!-- Input for product quantity with validation -->
+        <input id="quantity" type="number" formControlName="quantity" class="form-control" />
+        <!-- Validation messages for quantity field -->
+        <div *ngIf="updateForm.get('quantity')?.invalid && updateForm.get('quantity')?.touched" class="error-message">
+          <span *ngIf="updateForm.get('quantity')?.errors?.['required']">Quantity is required.</span>
+          <span *ngIf="updateForm.get('quantity')?.errors?.['min']">Quantity cannot be negative.</span>
+        </div>
+      </div>
+
+      <!-- Serial Number field -->
+      <div class="form-group">
+        <label for="serialNumber">Serial Number:</label>
+        <!-- Input for product serial number with validation -->
+        <input id="serialNumber" type="text" formControlName="serialNumber" class="form-control" />
+        <!-- Validation message for serial number field -->
+        <div *ngIf="updateForm.get('serialNumber')?.invalid && updateForm.get('serialNumber')?.touched"
+          class="error-message">
+          <span *ngIf="updateForm.get('serialNumber')?.errors?.['required']">Serial Number is required.</span>
+        </div>
+      </div>
+
+      <!-- Created At field (disabled) -->
+      <div class="form-group">
+        <label for="createdAt">Created At:</label>
+        <!-- Display the creation date (read-only) -->
+        <input id="createdAt" type="text" [value]="product.createdAt | date: 'short'" class="form-control" disabled />
+      </div>
+
+      <!-- Updated At field (disabled) -->
+      <div class="form-group">
+        <label for="updatedAt">Updated At:</label>
+        <!-- Display the last update date (read-only) -->
+        <input id="updatedAt" type="text" [value]="product.updatedAt | date: 'short'" class="form-control" disabled />
+      </div>
+
+      <!-- Is Deleted checkbox -->
+      <div class="form-group">
+        <label for="isDeleted">Is Deleted:</label>
+        <!-- Checkbox for marking the product as deleted -->
+        <input id="isDeleted" type="checkbox" formControlName="isDeleted" class="form-control" />
+      </div>
+
+      <!-- Form buttons -->
+      <div class="form-group">
+        <!-- Update button, disabled if form is invalid -->
+        <button type="submit" [disabled]="updateForm.invalid" class="btn btn-primary">Update</button>
+        <!-- Cancel button to close the modal -->
+        <button type="button" (click)="onCloseModal()" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

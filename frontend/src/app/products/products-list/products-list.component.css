@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 16px;
+}
+
+.add-product-button {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.search-product {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+table {
+  width: 80%;
+}
+
+.confirm-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.undo-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.mat-mdc-fab.mat-accent {
+  --mdc-fab-container-color: #673ab7;
+  height: 40px;
+  width: 40px;
+}
+
+button.mat-icon-button {
+  padding: 8px;
+}
+
+button.mat-raised-button {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+button.mat-icon-button,
+button.mat-raised-button {
+  margin: 0 4px;
+}

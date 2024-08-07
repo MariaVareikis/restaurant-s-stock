@@ -1,0 +1,209 @@
+[
+  {
+    "id": "de305d54-75b4-431b-adb2-eb6b9e546014",
+    "name": "Tomatoes",
+    "quantity": 50,
+    "serialNumber": "RS001",
+    "createdAt": "2024-01-01T10:00:00.000Z",
+    "updatedAt": "2024-08-07T17:00:48.648Z",
+    "isDeleted": false
+  },
+  {
+    "id": "e4eaaaf2-d142-11e1-b3e4-080027620cdd",
+    "name": "Potatoes",
+    "quantity": 100,
+    "serialNumber": "RS002",
+    "createdAt": "2024-01-02T10:00:00.000Z",
+    "updatedAt": "2024-08-07T16:37:05.386Z",
+    "isDeleted": false
+  },
+  {
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "name": "Onions",
+    "quantity": 50,
+    "serialNumber": "RS003",
+    "createdAt": "2024-01-03T10:00:00.000Z",
+    "updatedAt": "2024-08-07T17:07:23.894Z",
+    "isDeleted": false
+  },
+  {
+    "id": "9a8c4e58-02f3-44da-a0d3-4207d9d7f247",
+    "name": "Carrots",
+    "quantity": 60,
+    "serialNumber": "RS004",
+    "createdAt": "2024-01-04T10:00:00.000Z",
+    "updatedAt": "2024-08-06T18:03:37.529Z",
+    "isDeleted": false
+  },
+  {
+    "id": "6f19d6a8-87cf-4edb-8db4-3c19b6bf0a9f",
+    "name": "Chicken Breasts",
+    "quantity": 20,
+    "serialNumber": "RS005",
+    "createdAt": "2024-01-05T10:00:00.000Z",
+    "updatedAt": "2024-01-05T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "81c6e5d7-58f9-4f12-b18d-4c687e5a19a8",
+    "name": "Beef Steaks",
+    "quantity": 15,
+    "serialNumber": "RS006",
+    "createdAt": "2024-01-06T10:00:00.000Z",
+    "updatedAt": "2024-01-06T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "be6b6a4e-82a7-422d-b120-95c9b9ebbd63",
+    "name": "Salmon Fillets",
+    "quantity": 10,
+    "serialNumber": "RS007",
+    "createdAt": "2024-01-07T10:00:00.000Z",
+    "updatedAt": "2024-01-07T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "d271e9fa-3ac5-4be1-9120-0d6bfae5e1c7",
+    "name": "Milk",
+    "quantity": 30,
+    "serialNumber": "RS008",
+    "createdAt": "2024-01-08T10:00:00.000Z",
+    "updatedAt": "2024-08-05T06:17:16.436Z",
+    "isDeleted": false
+  },
+  {
+    "id": "58c3197d-75d6-46f0-92cc-8a19de5f81b5",
+    "name": "Cheddar Cheese",
+    "quantity": 25,
+    "serialNumber": "RS009",
+    "createdAt": "2024-01-09T10:00:00.000Z",
+    "updatedAt": "2024-01-09T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "c44142a2-9cde-4f9d-b769-8c4912b38dbd",
+    "name": "Butter",
+    "quantity": 20,
+    "serialNumber": "RS010",
+    "createdAt": "2024-01-10T10:00:00.000Z",
+    "updatedAt": "2024-01-10T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "f916d527-1f5d-4f43-b9ab-4b7d23046f07",
+    "name": "Eggs",
+    "quantity": 100,
+    "serialNumber": "RS011",
+    "createdAt": "2024-01-11T10:00:00.000Z",
+    "updatedAt": "2024-08-07T16:59:07.092Z",
+    "isDeleted": false
+  },
+  {
+    "id": "2aaf7f6d-7a8e-4a99-b8db-0c29de3af434",
+    "name": "Flour",
+    "quantity": 50,
+    "serialNumber": "RS012",
+    "createdAt": "2024-01-12T10:00:00.000Z",
+    "updatedAt": "2024-01-12T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "119d54b8-2c50-4e2f-9d4f-0f67dcd30f56",
+    "name": "Sugar",
+    "quantity": 40,
+    "serialNumber": "RS013",
+    "createdAt": "2024-01-13T10:00:00.000Z",
+    "updatedAt": "2024-01-13T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "de973fd8-d054-4f2b-8f39-0e1b5a41ab2f",
+    "name": "Salt",
+    "quantity": 30,
+    "serialNumber": "RS014",
+    "createdAt": "2024-01-14T10:00:00.000Z",
+    "updatedAt": "2024-01-14T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "8a75c1d4-0f1d-42bc-ae9a-63a2c7a72df0",
+    "name": "Black Pepper",
+    "quantity": 25,
+    "serialNumber": "RS015",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "9f09c6e2-daa5-45f1-8a2d-9a7b7a5b19d3",
+    "name": "Olive Oil",
+    "quantity": 20,
+    "serialNumber": "RS016",
+    "createdAt": "2024-01-16T10:00:00.000Z",
+    "updatedAt": "2024-01-16T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "18e39f7c-ef7d-4e57-8b3f-31e1d758f56f",
+    "name": "Balsamic Vinegar",
+    "quantity": 15,
+    "serialNumber": "RS017",
+    "createdAt": "2024-01-17T10:00:00.000Z",
+    "updatedAt": "2024-01-17T10:00:00.000Z",
+    "isDeleted": false
+  },
+  {
+    "id": "95b63afc-0f1d-4b2a-8d9a-7e1f1f4a8e87",
+    "name": "Garlic",
+    "quantity": 50,
+    "serialNumber": "RS018",
+    "createdAt": "2024-01-18T10:00:00.000Z",
+    "updatedAt": "2024-08-05T16:48:30.490Z",
+    "isDeleted": false
+  },
+  {
+    "id": "f5731af8-d152-4e24-a1d3-7e7b7e7b7f6e",
+    "name": "Basil",
+    "quantity": 10,
+    "serialNumber": "RS019",
+    "createdAt": "2024-01-19T10:00:00.000Z",
+    "updatedAt": "2024-08-04T13:55:18.347Z",
+    "isDeleted": false
+  },
+  {
+    "id": "bfe1a2fa-60f3-42ed-b6e9-7a8e1f2d89b7",
+    "name": "Oregano",
+    "quantity": 10,
+    "serialNumber": "RS020",
+    "createdAt": "2024-01-20T10:00:00.000Z",
+    "updatedAt": "2024-08-07T16:45:00.532Z",
+    "isDeleted": false
+  },
+  {
+    "id": "8d505a14-c492-4f6c-8004-3f35fa8712c4",
+    "name": "Pastrama",
+    "quantity": 12,
+    "serialNumber": "RS021",
+    "createdAt": "2024-01-01T10:00:00.000Z",
+    "updatedAt": "2024-08-06T18:35:11.187Z",
+    "isDeleted": false
+  },
+  {
+    "id": "e9fdf66a-c2ee-4a1b-ae21-35d72b591d03",
+    "name": "Pasta",
+    "quantity": 10,
+    "serialNumber": "RS023",
+    "isDeleted": false,
+    "createdAt": "2024-08-06T18:46:11.886Z",
+    "updatedAt": "2024-08-07T16:04:24.923Z"
+  },
+  {
+    "id": "7cd88dbd-456d-4bc5-9d70-a2ba08a0de46",
+    "name": "Milky",
+    "quantity": 10,
+    "serialNumber": "RS024",
+    "isDeleted": false,
+    "createdAt": "2024-08-07T17:17:39.760Z",
+    "updatedAt": "2024-08-07T17:34:38.825Z"
+  }
+]

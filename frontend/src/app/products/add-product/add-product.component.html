@@ -1,0 +1,72 @@
+<!-- Modal container: Only visible if 'addForm' is truthy -->
+<div class="modal" *ngIf="addForm">
+  <!-- Modal content box -->
+  <div class="modal-content">
+    <!-- Close button: Calls onCloseModal method when clicked -->
+    <span class="close" (click)="onCloseModal()">&times;</span>
+    <!-- Modal title -->
+    <h2>Add Product</h2>
+
+    <!-- Form for adding a new product -->
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+      <!-- Form group for product name -->
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <!-- Input for product name, bound to 'name' form control -->
+        <input id="name" type="text" formControlName="name" class="form-control" />
+        <!-- Error message for 'name' field if invalid and touched -->
+        <div *ngIf="addForm.get('name')?.invalid && addForm.get('name')?.touched" class="error-message">
+          <span *ngIf="addForm.get('name')?.errors?.['required']">Name is required.</span>
+        </div>
+      </div>
+
+      <!-- Form group for product quantity -->
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <!-- Input for product quantity, bound to 'quantity' form control -->
+        <input id="quantity" type="number" formControlName="quantity" class="form-control" />
+        <!-- Error message for 'quantity' field if invalid and touched -->
+        <div *ngIf="addForm.get('quantity')?.invalid && addForm.get('quantity')?.touched" class="error-message">
+          <span *ngIf="addForm.get('quantity')?.errors?.['required']">Quantity is required.</span>
+          <span *ngIf="addForm.get('quantity')?.errors?.['min']">Quantity must be at least 1.</span>
+        </div>
+      </div>
+
+      <!-- Form group for product serial number -->
+      <div class="form-group">
+        <label for="serialNumber">Serial Number:</label>
+        <!-- Input for product serial number, bound to 'serialNumber' form control -->
+        <input id="serialNumber" type="text" formControlName="serialNumber" class="form-control" />
+        <!-- Error message for 'serialNumber' field if invalid and touched -->
+        <div *ngIf="addForm.get('serialNumber')?.invalid && addForm.get('serialNumber')?.touched" class="error-message">
+          <span *ngIf="addForm.get('serialNumber')?.errors?.['required']">Serial Number is required.</span>
+        </div>
+      </div>
+
+      <!-- Form group for 'createdAt' field (display only) -->
+      <div class="form-group">
+        <label for="createdAt">Created At:</label>
+        <!-- Input for 'createdAt' field, formatted as a date and disabled -->
+        <input id="createdAt" type="text" [value]="addForm.get('createdAt')?.value | date: 'short'" class="form-control"
+          disabled />
+      </div>
+
+      <!-- Form group for 'updatedAt' field (display only) -->
+      <div class="form-group">
+        <label for="updatedAt">Updated At:</label>
+        <!-- Input for 'updatedAt' field, formatted as a date and disabled -->
+        <input id="updatedAt" type="text" [value]="addForm.get('updatedAt')?.value | date: 'short'" class="form-control"
+          disabled />
+      </div>
+
+      <!-- Form group for submit and cancel buttons -->
+      <div class="form-group">
+        <!-- Submit button: Disabled if form is invalid -->
+        <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary">Add</button>
+        <!-- Cancel button: Calls onCloseModal method when clicked -->
+        <button type="button" (click)="onCloseModal()" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="container">
+  <!-- Header section containing buttons for adding a product and search functionality -->
+  <div class="header">
+    <!-- Button to open the Add Product modal -->
+    <button mat-raised-button color="primary" (click)="showAddProductModal()" class="add-product-button">
+      Add Product
+    </button>
+
+    <!-- Search product component with event binding to handle search input -->
+    <app-search-product (search)="onSearch($event)" class="search-product"></app-search-product>
+  </div>
+
+  <!-- Table displaying the list of products with filtering applied -->
+  <table mat-table [dataSource]="filteredProducts$ | async" class="mat-elevation-z8">
+
+    <!-- Column for displaying product name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+    </ng-container>
+
+    <!-- Column for displaying product quantity -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> Quantity </th>
+      <td mat-cell *matCellDef="let product"> {{product.quantity}} </td>
+    </ng-container>
+
+    <!-- Column for displaying product serial number -->
+    <ng-container matColumnDef="serialNumber">
+      <th mat-header-cell *matHeaderCellDef> Serial Number </th>
+      <td mat-cell *matCellDef="let product"> {{product.serialNumber}} </td>
+    </ng-container>
+
+    <!-- Column for displaying product creation date -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef> Created At </th>
+      <td mat-cell *matCellDef="let product"> {{formatDate(product.createdAt)}} </td>
+    </ng-container>
+
+    <!-- Column for displaying product update date -->
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef> Updated At </th>
+      <td mat-cell *matCellDef="let product"> {{formatDate(product.updatedAt)}} </td>
+    </ng-container>
+
+    <!-- Column with button to delete a product -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let product">
+        <!-- Button to confirm product deletion -->
+        <button mat-icon-button color="warn" (click)="confirmDelete(product)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Column with button to update a product -->
+    <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef> Update </th>
+      <td mat-cell *matCellDef="let product">
+        <!-- Button to open the Update Product modal -->
+        <button mat-icon-button color="accent" (click)="openModal(product)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Define header and row structure for the table -->
+    <tr mat-header-row
+      *matHeaderRowDef="['name', 'quantity', 'serialNumber', 'createdAt', 'updatedAt', 'delete', 'update']"></tr>
+    <tr mat-row
+      *matRowDef="let row; columns: ['name', 'quantity', 'serialNumber', 'createdAt', 'updatedAt', 'delete', 'update'];">
+    </tr>
+  </table>
+
+  <!-- Confirmation dialog for product deletion -->
+  <div *ngIf="showConfirmDialog" class="confirm-dialog">
+    <p>Are you sure you want to delete {{ productToDelete?.name }}?</p>
+    <button mat-raised-button color="warn" (click)="deleteProduct()">Yes</button>
+    <button mat-raised-button color="primary" (click)="cancelDelete()">No</button>
+  </div>
+
+  <!-- Undo button for restoring a deleted product -->
+  <div *ngIf="undoFlag" class="undo-button">
+    <button mat-raised-button color="accent" (click)="undoDelete()">Undo</button>
+  </div>
+
+  <!-- Modal for updating a product -->
+  <app-update-product *ngIf="showModal" [product]="selectedProduct" (productUpdated)="onProductUpdated($event)"
+    (closeModal)="closeModal()">
+  </app-update-product>
+
+  <!-- Modal for adding a product -->
+  <app-add-product *ngIf="showAddProductModalFlag" (productAdded)="onProductAdded($event)"
+    (closeModal)="closeAddProductModal()">
+  </app-add-product>
+</div>
