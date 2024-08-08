@@ -1,16 +1,26 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { Product } from '../../models/product.model';
 import { v4 as uuidv4 } from 'uuid';
 
-
 @Component({
   selector: 'app-add-product',
-  standalone: true, 
-  templateUrl: './add-product.component.html', 
-  styleUrls: ['./add-product.component.css'], 
-  imports: [CommonModule, ReactiveFormsModule] 
+  standalone: true,
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.css'],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule
+  ]
 })
 export class AddProductComponent implements OnInit {
   // Output event emitter to notify parent component when a product is added

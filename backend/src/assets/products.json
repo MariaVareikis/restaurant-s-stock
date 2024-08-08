@@ -5,7 +5,7 @@
     "quantity": 50,
     "serialNumber": "RS001",
     "createdAt": "2024-01-01T10:00:00.000Z",
-    "updatedAt": "2024-08-07T17:00:48.648Z",
+    "updatedAt": "2024-08-08T03:03:23.948Z",
     "isDeleted": false
   },
   {
@@ -204,6 +204,15 @@
     "serialNumber": "RS024",
     "isDeleted": false,
     "createdAt": "2024-08-07T17:17:39.760Z",
-    "updatedAt": "2024-08-07T17:34:38.825Z"
+    "updatedAt": "2024-08-08T03:03:30.411Z"
+  },
+  {
+    "id": "323e8e58-39d0-40f7-8bde-cc2bec2b9632",
+    "name": "Bamba",
+    "quantity": 15,
+    "serialNumber": "1234",
+    "isDeleted": false,
+    "createdAt": "2024-08-08T03:04:29.489Z",
+    "updatedAt": "2024-08-08T03:04:34.744Z"
   }
 ]

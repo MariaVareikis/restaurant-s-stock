@@ -7,69 +7,63 @@
 
     <!-- Form for updating product details -->
     <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
-
       <!-- Name field -->
-      <div class="form-group">
-        <label for="name">Name:</label>
+      <mat-form-field appearance="fill" class="form-group">
+        <mat-label>Name</mat-label>
         <!-- Input for product name with validation -->
-        <input id="name" type="text" formControlName="name" class="form-control" />
+        <input matInput id="name" type="text" formControlName="name" />
         <!-- Validation message for name field -->
-        <div *ngIf="updateForm.get('name')?.invalid && updateForm.get('name')?.touched" class="error-message">
+        <mat-error *ngIf="updateForm.get('name')?.invalid && updateForm.get('name')?.touched">
           <span *ngIf="updateForm.get('name')?.errors?.['required']">Name is required.</span>
-        </div>
-      </div>
+        </mat-error>
+      </mat-form-field>
 
       <!-- Quantity field -->
-      <div class="form-group">
-        <label for="quantity">Quantity:</label>
+      <mat-form-field appearance="fill" class="form-group">
+        <mat-label>Quantity</mat-label>
         <!-- Input for product quantity with validation -->
-        <input id="quantity" type="number" formControlName="quantity" class="form-control" />
+        <input matInput id="quantity" type="number" formControlName="quantity" />
         <!-- Validation messages for quantity field -->
-        <div *ngIf="updateForm.get('quantity')?.invalid && updateForm.get('quantity')?.touched" class="error-message">
+        <mat-error *ngIf="updateForm.get('quantity')?.invalid && updateForm.get('quantity')?.touched">
           <span *ngIf="updateForm.get('quantity')?.errors?.['required']">Quantity is required.</span>
-          <span *ngIf="updateForm.get('quantity')?.errors?.['min']">Quantity cannot be negative.</span>
-        </div>
-      </div>
+          <span *ngIf="updateForm.get('quantity')?.errors?.['min']">Quantity must be at least 1.</span>
+        </mat-error>
+      </mat-form-field>
 
       <!-- Serial Number field -->
-      <div class="form-group">
-        <label for="serialNumber">Serial Number:</label>
+      <mat-form-field appearance="fill" class="form-group">
+        <mat-label>Serial Number</mat-label>
         <!-- Input for product serial number with validation -->
-        <input id="serialNumber" type="text" formControlName="serialNumber" class="form-control" />
+        <input matInput id="serialNumber" type="text" formControlName="serialNumber" />
         <!-- Validation message for serial number field -->
-        <div *ngIf="updateForm.get('serialNumber')?.invalid && updateForm.get('serialNumber')?.touched"
-          class="error-message">
+        <mat-error *ngIf="updateForm.get('serialNumber')?.invalid && updateForm.get('serialNumber')?.touched">
           <span *ngIf="updateForm.get('serialNumber')?.errors?.['required']">Serial Number is required.</span>
-        </div>
-      </div>
+        </mat-error>
+      </mat-form-field>
 
       <!-- Created At field (disabled) -->
-      <div class="form-group">
-        <label for="createdAt">Created At:</label>
+      <mat-form-field appearance="fill" class="form-group">
+        <mat-label>Created At</mat-label>
         <!-- Display the creation date (read-only) -->
-        <input id="createdAt" type="text" [value]="product.createdAt | date: 'short'" class="form-control" disabled />
-      </div>
+        <input matInput id="createdAt" type="text" [value]="product.createdAt | date: 'short'" disabled />
+      </mat-form-field>
 
       <!-- Updated At field (disabled) -->
-      <div class="form-group">
-        <label for="updatedAt">Updated At:</label>
+      <mat-form-field appearance="fill" class="form-group">
+        <mat-label>Updated At</mat-label>
         <!-- Display the last update date (read-only) -->
-        <input id="updatedAt" type="text" [value]="product.updatedAt | date: 'short'" class="form-control" disabled />
-      </div>
+        <input matInput id="updatedAt" type="text" [value]="product.updatedAt | date: 'short'" disabled />
+      </mat-form-field>
 
       <!-- Is Deleted checkbox -->
-      <div class="form-group">
-        <label for="isDeleted">Is Deleted:</label>
-        <!-- Checkbox for marking the product as deleted -->
-        <input id="isDeleted" type="checkbox" formControlName="isDeleted" class="form-control" />
-      </div>
+      <mat-checkbox formControlName="isDeleted">Is Deleted</mat-checkbox>
 
       <!-- Form buttons -->
       <div class="form-group">
         <!-- Update button, disabled if form is invalid -->
-        <button type="submit" [disabled]="updateForm.invalid" class="btn btn-primary">Update</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="updateForm.invalid">Update</button>
         <!-- Cancel button to close the modal -->
-        <button type="button" (click)="onCloseModal()" class="btn btn-secondary">Cancel</button>
+        <button mat-raised-button color="accent" type="button" (click)="onCloseModal()">Cancel</button>
       </div>
     </form>
   </div>

@@ -12,6 +12,7 @@ import { UpdateProductComponent } from '../update-product/update-product.compone
 import { AddProductComponent } from '../add-product/add-product.component';
 import { SearchProductComponent } from '../search-product/search-product.component';
 import { map } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products-list',
@@ -44,9 +45,6 @@ export class ProductsListComponent {
   // Store the recently deleted product for potential restoration
   recentlyDeletedProduct: Product | null = null;
 
-  // Flag to show the confirmation dialog for product deletion
-  showConfirmDialog = false;
-
   // Product that is currently being considered for deletion
   productToDelete: Product | null = null;
 
@@ -65,6 +63,9 @@ export class ProductsListComponent {
   // Flag to control the visibility of the add product modal
   showAddProductModalFlag = false;
 
+  // Flag to indicate whether any modal or delete action is open
+  isActionOpen = false;
+
   constructor(private productService: ProductService) {
     // Initialize observables for products and filtered products
     this.products$ = this.productService.products$;
@@ -76,16 +77,27 @@ export class ProductsListComponent {
     return this.datePipe.transform(date, 'short') || '';
   }
 
-  // Trigger confirmation dialog for product deletion
+  // Trigger confirmation dialog for product deletion using SweetAlert2
   confirmDelete(product: Product): void {
     this.productToDelete = product;
-    this.showConfirmDialog = true;
-  }
+    this.isActionOpen = true; // Disable other buttons
 
-  // Cancel the deletion process and hide the confirmation dialog
-  cancelDelete(): void {
-    this.productToDelete = null;
-    this.showConfirmDialog = false;
+    // Show SweetAlert2 confirmation dialog
+    Swal.fire({
+      title: 'Delete Product',
+      text: `Are you sure you want to delete ${product.name}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteProduct();
+      } else {
+        this.isActionOpen = false; // Enable other buttons if cancelled
+      }
+    });
   }
 
   // Perform product deletion and handle related updates
@@ -102,12 +114,25 @@ export class ProductsListComponent {
           }
           this.recentlyDeletedProduct = products.find(product => product.id === this.productToDelete?.id) || null;
         });
-        this.showConfirmDialog = false;
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your product has been deleted.",
+          icon: "success"
+        });
         this.undoFlag = true;
         this.undoId = this.productToDelete.id;
         this.productToDelete = null; // Reset productToDelete after deletion
+        this.isActionOpen = false; // Enable other buttons
       },
-      error: (error) => console.error('Error deleting product:', error)
+      error: (error) => {
+        console.error('Error deleting product:', error);
+        Swal.fire({
+          title: "Error!",
+          text: "There was an issue deleting the product.",
+          icon: "error"
+        });
+        this.isActionOpen = false; // Enable other buttons
+      }
     });
   }
 
@@ -130,11 +155,13 @@ export class ProductsListComponent {
   openModal(product: Partial<Product>): void {
     this.selectedProduct = product;
     this.showModal = true;
+    this.isActionOpen = true; // Disable other buttons
   }
 
   // Close the update product modal
   closeModal(): void {
     this.showModal = false;
+    this.isActionOpen = false; // Enable other buttons
   }
 
   // Handle product update and refresh the product list
@@ -151,11 +178,13 @@ export class ProductsListComponent {
   // Show the add product modal
   showAddProductModal(): void {
     this.showAddProductModalFlag = true;
+    this.isActionOpen = true; // Disable other buttons
   }
 
   // Close the add product modal
   closeAddProductModal(): void {
     this.showAddProductModalFlag = false;
+    this.isActionOpen = false; // Enable other buttons
   }
 
   // Handle adding a new product and refresh the product list
@@ -169,12 +198,13 @@ export class ProductsListComponent {
     });
   }
 
-  // Filter products based on the search term
+  // Filter products based on the search term for name and serial number
   onSearch(searchTerm: string): void {
     this.filteredProducts$ = this.products$.pipe(
       map(products =>
         products.filter(product =>
-          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+          product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.serialNumber.toLowerCase().includes(searchTerm.toLowerCase())
         )
       )
     );

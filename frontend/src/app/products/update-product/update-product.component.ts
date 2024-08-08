@@ -1,6 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -8,7 +13,15 @@ import { Product } from '../../models/product.model';
   standalone: true,
   templateUrl: './update-product.component.html',
   styleUrls: ['./update-product.component.css'],
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatFormFieldModule
+  ]
 })
 export class UpdateProductComponent implements OnInit {
   // Input property to receive the product data from the parent component

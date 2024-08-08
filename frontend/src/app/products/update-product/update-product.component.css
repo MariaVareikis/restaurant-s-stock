@@ -36,27 +36,10 @@
   margin-bottom: 15px;
 }
 
-.form-control {
+.mat-form-field {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
 }
 
-.btn {
-  padding: 10px 20px;
+button {
   margin-right: 10px;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: #fff;
-  border: none;
 }

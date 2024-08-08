@@ -2,7 +2,8 @@
   <!-- Header section containing buttons for adding a product and search functionality -->
   <div class="header">
     <!-- Button to open the Add Product modal -->
-    <button mat-raised-button color="primary" (click)="showAddProductModal()" class="add-product-button">
+    <button mat-raised-button color="primary" (click)="showAddProductModal()" class="add-product-button"
+      [disabled]="isActionOpen">
       Add Product
     </button>
 
@@ -48,7 +49,7 @@
       <th mat-header-cell *matHeaderCellDef> Delete </th>
       <td mat-cell *matCellDef="let product">
         <!-- Button to confirm product deletion -->
-        <button mat-icon-button color="warn" (click)="confirmDelete(product)">
+        <button mat-icon-button color="warn" (click)="confirmDelete(product)" [disabled]="isActionOpen">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
@@ -59,13 +60,13 @@
       <th mat-header-cell *matHeaderCellDef> Update </th>
       <td mat-cell *matCellDef="let product">
         <!-- Button to open the Update Product modal -->
-        <button mat-icon-button color="accent" (click)="openModal(product)">
+        <button mat-icon-button color="accent" (click)="openModal(product)" [disabled]="isActionOpen">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
     </ng-container>
 
-    <!-- Define header and row structure for the table -->
+    <!-- Table header and row definitions -->
     <tr mat-header-row
       *matHeaderRowDef="['name', 'quantity', 'serialNumber', 'createdAt', 'updatedAt', 'delete', 'update']"></tr>
     <tr mat-row
@@ -73,25 +74,19 @@
     </tr>
   </table>
 
-  <!-- Confirmation dialog for product deletion -->
-  <div *ngIf="showConfirmDialog" class="confirm-dialog">
-    <p>Are you sure you want to delete {{ productToDelete?.name }}?</p>
-    <button mat-raised-button color="warn" (click)="deleteProduct()">Yes</button>
-    <button mat-raised-button color="primary" (click)="cancelDelete()">No</button>
-  </div>
+  <!-- Undo button for restoring recently deleted product -->
+  <button mat-raised-button color="primary" class="undo-button" *ngIf="undoFlag" (click)="undoDelete()">
+    Undo
+  </button>
 
-  <!-- Undo button for restoring a deleted product -->
-  <div *ngIf="undoFlag" class="undo-button">
-    <button mat-raised-button color="accent" (click)="undoDelete()">Undo</button>
-  </div>
+  <!-- Add Product modal component -->
+  <ng-container *ngIf="showAddProductModalFlag">
+    <app-add-product (productAdded)="onProductAdded($event)" (closeModal)="closeAddProductModal()"></app-add-product>
+  </ng-container>
 
-  <!-- Modal for updating a product -->
-  <app-update-product *ngIf="showModal" [product]="selectedProduct" (productUpdated)="onProductUpdated($event)"
-    (closeModal)="closeModal()">
-  </app-update-product>
-
-  <!-- Modal for adding a product -->
-  <app-add-product *ngIf="showAddProductModalFlag" (productAdded)="onProductAdded($event)"
-    (closeModal)="closeAddProductModal()">
-  </app-add-product>
+  <!-- Update Product modal component -->
+  <ng-container *ngIf="showModal">
+    <app-update-product [product]="selectedProduct" (productUpdated)="onProductUpdated($event)"
+      (closeModal)="closeModal()"></app-update-product>
+  </ng-container>
 </div>
